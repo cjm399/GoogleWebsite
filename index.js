@@ -1,13 +1,6 @@
-require('dotenv').config()
-const db = require('db')
+console.log(process.env.GOOGLE_API_KEY);
 
-db.connect({
-  googleAPIKey : process.env.GOOGLE_API_KEY
-});
-
-console.log(googleAPIKey);
-
-const api_key = googleAPIKey;
+const api_key = process.env.GOOGLE_API_KEY;
 console.log(api_key);
 const gUrl = 'https://maps.googleapis.com/maps/api/js?key='+api_key+'&callback=initPano&libraries=&v=weekly';
 var script = document.createElement('script');
