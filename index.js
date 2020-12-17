@@ -7,6 +7,8 @@ reader.onload = function() {
   console.log(reader.result);
 };
 
+console.log(GOOGLE_API_KEY);
+
 /*console.log(process.env.GOOGLE_API_KEY);
 
 const api_key = process.env.GOOGLE_API_KEY;

@@ -1,0 +1,1 @@
+find . -type f -name \*.html -o -name \*.js -o -name \*.css -exec sed -i s/PLACEHOLDER/${VARIABLE}/g {} \;
