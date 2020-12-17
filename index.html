@@ -2,9 +2,12 @@
 <html>
   <head>
     <title>Street View Events</title>
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default">
+    const api_key = process.env.GOOGLE_API_KEY;
+    const gUrl = "https://maps.googleapis.com/maps/api/js?key="+api_key+"&callback=initPano&libraries=&v=weekly"
+    </script>
     <script
-      src="https://maps.googleapis.com/maps/api/js?key=GOOGLE_API_KEY&callback=initPano&libraries=&v=weekly"
+      src=gURl
       defer
     ></script>
     <link rel="stylesheet" type="text/css" href="./style.css" />
