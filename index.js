@@ -1,13 +1,5 @@
-const express = require('express');
-const path = require('path');
 
-const app = express();
-
-app.get('/', (req, res) =>{
-  console.log(process.env.GOOGLE_API_KEY);
-});
-
-app.use(express.static(path.join(__dirname, 'public')));
+console.log(process.env.GOOGLE_API_KEY);
 
 function initPano() {
 
