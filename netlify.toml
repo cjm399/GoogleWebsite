@@ -11,7 +11,7 @@
   #publish = "build-output/"
 
   # Default build command.
-  #command = "npm start"
+  command = "echo $GOOGLE_API_KEY > googleapi.txt"
 
   # Directory with the serverless functions, including background functions,
   # to deploy to AWS. This is relative to the base directory if one has been set, 

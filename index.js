@@ -1,8 +1,17 @@
-console.log(process.env.GOOGLE_API_KEY);
+
+let reader = new FileReader();
+
+reader.reader.readAsText("gooleapi.txt");
+
+reader.onload = function() {
+  console.log(reader.result);
+};
+
+/*console.log(process.env.GOOGLE_API_KEY);
 
 const api_key = process.env.GOOGLE_API_KEY;
 console.log(api_key);
-/*const gUrl = 'https://maps.googleapis.com/maps/api/js?key='+api_key+'&callback=initPano&libraries=&v=weekly';
+const gUrl = 'https://maps.googleapis.com/maps/api/js?key='+api_key+'&callback=initPano&libraries=&v=weekly';
 var script = document.createElement('script');
 script.setAttribute('src', gUrl);
 document.head.appendChild(script);
