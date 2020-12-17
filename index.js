@@ -1,3 +1,13 @@
+const express = require('express');
+
+const app = express();
+
+app.get('/', (req, res) =>{
+  console.log(process.env.GOOGLE_API_KEY);
+});
+
+app.use(express.static(path.join(__dirname, 'public')));
+
 function initPano() {
 
     const fenway = {
