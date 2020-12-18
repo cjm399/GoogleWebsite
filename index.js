@@ -65,11 +65,11 @@ function initPano() {
   
     marker.addListener("click", () => {
       const panoE = document.getElementById("pano");
-      panoE.setAttribute("style","width:100");
+      panoE.setAttribute("style","display:block");
       const overlayE= document.getElementById("overlay");
       overlay.setAttribute("style","display:block");
       const mapE = document.getElementById("map");
-      mapE.setAttribute("style","width:0");
+      mapE.setAttribute("style","display:none");
       panorama.setVisible(false);
       panorama.setVisible(true);
       inMapView = false;
@@ -79,11 +79,11 @@ function initPano() {
     
     document.getElementById("returnToMap").addEventListener("click", () =>{
       const panoE = document.getElementById("pano");
-      panoE.setAttribute("style","width:0");
+      panoE.setAttribute("style","display:none");
       const overlayE = document.getElementById("overlay");
       overlayE.setAttribute("style","display:none");
       const mapE = document.getElementById("map");
-      mapE.setAttribute("style","width:100");
+      mapE.setAttribute("style","display:block");
       panorama.setVisible(false);
       panorama.setVisible(true);
       inMapView = true;
