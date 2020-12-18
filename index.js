@@ -56,6 +56,7 @@ function initPano() {
       }
     });
     panorama.addListener("position_changed", () => {
+      pos = panorama.GetPosition();
     });
     panorama.addListener("pov_changed", () => {
       heading = panorama.getPov().heading;
@@ -91,7 +92,7 @@ function initPano() {
   }
 
 function GetStreetViewInfo(){
-  var obj = {"lat":pos.lat, "lng":pos.lng, "heading":heading, "pitch":pitch, "inMapView":inMapView};
+  var obj = {"pos":pos, "heading":heading, "pitch":pitch, "inMapView":inMapView};
   return JSON.stringify(obj);
 }
   
