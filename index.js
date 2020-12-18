@@ -56,7 +56,7 @@ function initPano() {
       }
     });
     panorama.addListener("position_changed", () => {
-      pos = panorama.GetPosition();
+      pos = panorama.getPosition();
     });
     panorama.addListener("pov_changed", () => {
       heading = panorama.getPov().heading;
