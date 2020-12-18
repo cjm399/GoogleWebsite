@@ -1,11 +1,13 @@
 const fenway = {
-  lat: 42.345573,
-  lng: -71.098326
+  lat: 39.96,
+  lng: -75.17
 };
 var inMapView = true;
 var pos = fenway;
 var heading = 270.0;
 var pitch = 0.0;
+
+var markers = [];
 
 function initPano() {
     const map = new google.maps.Map(document.getElementById("map"), {
@@ -14,12 +16,7 @@ function initPano() {
       disableDefaultUI: true,
     });
   
-    const marker = new google.maps.Marker({
-      position: pos,
-      map,
-      title: "Fenway",
-    });
-  
+    AddMarker(pos.lat, pos.lng, "Fenway");
   
     const panorama = new google.maps.StreetViewPanorama(
       document.getElementById("pano"), {
@@ -62,22 +59,7 @@ function initPano() {
       heading = panorama.getPov().heading;
       pitch = panorama.getPov().pitch;
     });
-  
-  
-    marker.addListener("click", () => {
-      const panoE = document.getElementById("pano");
-      panoE.setAttribute("style","display:block");
-      const overlayE= document.getElementById("overlay");
-      overlay.setAttribute("style","display:block");
-      const mapE = document.getElementById("map");
-      mapE.setAttribute("style","display:none");
-      panorama.setVisible(false);
-      panorama.setVisible(true);
-      inMapView = false;
-      pos = marker.position;
-      panorama.setPosition(marker.position);
-    });
-    
+
     document.getElementById("returnToMap").addEventListener("click", () =>{
       const panoE = document.getElementById("pano");
       panoE.setAttribute("style","display:none");
@@ -95,4 +77,30 @@ function GetStreetViewInfo(){
   var obj = {"pos":pos, "heading":heading, "pitch":pitch, "inMapView":inMapView};
   return JSON.stringify(obj);
 }
-  
+
+function AddMarker(_lat, _lng, _title)
+{
+    var currMarker = new google.maps.Marker({
+      position: {
+        lat: _lat,
+        lng: _lng
+      },
+      map,
+      title: _title,
+    });
+
+    currMarker.addListener("click", () => {
+      const panoE = document.getElementById("pano");
+      panoE.setAttribute("style","display:block");
+      const overlayE= document.getElementById("overlay");
+      overlay.setAttribute("style","display:block");
+      const mapE = document.getElementById("map");
+      mapE.setAttribute("style","display:none");
+      panorama.setVisible(false);
+      panorama.setVisible(true);
+      inMapView = false;
+      pos = marker.position;
+      panorama.setPosition(marker.position);
+    });
+    markers.push(currMarker);
+}
