@@ -57,7 +57,7 @@ function initPano() {
     });
     panorama.addListener("position_changed", () => {
       var lat = panorama.getPosition().lat();
-      var lng = panorama.getPosition().lat();
+      var lng = panorama.getPosition().lng();
       pos.lat = lat;
       pos.lng = lng;
     });
