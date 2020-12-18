@@ -1,33 +1,32 @@
-const posElement = document.getElementById('position-cell');
-const headingElement = document.getElementById('heading-cell');
-const pitchElement = document.getElementById('pitch-cell');
+const fenway = {
+  lat: 42.345573,
+  lng: -71.098326
+};
 var inMapView = true;
+var pos = fenway;
+var heading = 270;
+var pitch = 0;
 
 function initPano() {
-
-    const fenway = {
-      lat: 42.345573,
-      lng: -71.098326
-    };
     const map = new google.maps.Map(document.getElementById("map"), {
-      center: fenway,
+      center: pos,
       zoom: 14,
       disableDefaultUI: true,
     });
   
     const marker = new google.maps.Marker({
-      position: fenway,
+      position: pos,
       map,
-      title: "Hello World!",
+      title: "Fenway",
     });
   
   
     const panorama = new google.maps.StreetViewPanorama(
       document.getElementById("pano"), {
-        position: fenway,
+        position: pos,
         pov: {
-          heading: 270,
-          pitch: 0,
+          heading: heading,
+          pitch: pitch,
         },
         visible: true,
         disableDefaultUI: true,
@@ -57,37 +56,35 @@ function initPano() {
       }
     });
     panorama.addListener("position_changed", () => {
-      const positionCell = document.getElementById("position-cell");
-      positionCell.firstChild.nodeValue = panorama.getPosition() + "";
+      pos = panorama.getPosition();
     });
     panorama.addListener("pov_changed", () => {
-      const headingCell = document.getElementById("heading-cell");
-      const pitchCell = document.getElementById("pitch-cell");
-      headingCell.firstChild.nodeValue = panorama.getPov().heading + "";
-      pitchCell.firstChild.nodeValue = panorama.getPov().pitch + "";
+      heading = panorama.getPov().heading;
+      pitch = panorama.getPov().pitch;
     });
   
   
     marker.addListener("click", () => {
-      var x = document.getElementById("pano");
-      x.setAttribute("style","display:block");
-      var x = document.getElementById("overlay");
-      x.setAttribute("style","display:block");
-      var x = document.getElementById("map");
-      x.setAttribute("style","display:none");
+      const panoE = document.getElementById("pano");
+      panoE.setAttribute("style","display:block");
+      const overlayE= document.getElementById("overlay");
+      overlay.setAttribute("style","display:block");
+      const mapE = document.getElementById("map");
+      mapE.setAttribute("style","display:none");
       panorama.setVisible(false);
       panorama.setVisible(true);
       inMapView = false;
+      pos = marker.position;
       panorama.setPosition(marker.position);
     });
     
     document.getElementById("returnToMap").addEventListener("click", () =>{
-      var x = document.getElementById("pano");
-      x.setAttribute("style","display:none");
-      var x = document.getElementById("overlay");
-      x.setAttribute("style","display:none");
-      var x = document.getElementById("map");
-      x.setAttribute("style","display:block");
+      const panoE = document.getElementById("pano");
+      panoE.setAttribute("style","display:none");
+      const overlayE = document.getElementById("overlay");
+      overlayE.setAttribute("style","display:none");
+      const mapE = document.getElementById("map");
+      mapE.setAttribute("style","display:block");
       panorama.setVisible(false);
       panorama.setVisible(true);
       inMapView = true;
@@ -95,9 +92,6 @@ function initPano() {
   }
 
 function GetStreetViewInfo(){
-  var pos = posElement.innerText;
-  var heading = headingElement.innerText;
-  var pitch = pitchElement.innerText;
   return ({"pos":pos, "heading":heading, "pitch":pitch, "inMapView":inMapView});
 }
   
