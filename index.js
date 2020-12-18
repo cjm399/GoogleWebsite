@@ -95,6 +95,6 @@ function initPano() {
   }
 
 function GetStreetViewInfo(){
-  return ({"pos":pos, "heading":heading, "pitch":pitch, "inMapView":inMapView});
+  return ({"lat":pos.lat, "lng":pos.lng, "heading":heading, "pitch":pitch, "inMapView":inMapView});
 }
   
