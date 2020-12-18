@@ -1,3 +1,8 @@
+const posElement = document.getElementById('position-cell');
+const headingElement = document.getElementById('heading-cell');
+const pitchElement = document.getElementById('pitch-cell');
+var inMapView = true;
+
 function initPano() {
 
     const fenway = {
@@ -72,7 +77,7 @@ function initPano() {
       x.setAttribute("style","display:none");
       panorama.setVisible(false);
       panorama.setVisible(true);
-      
+      inMapView = false;
       panorama.setPosition(marker.position);
     });
     
@@ -85,6 +90,14 @@ function initPano() {
       x.setAttribute("style","display:block");
       panorama.setVisible(false);
       panorama.setVisible(true);
+      inMapView = true;
     });
   }
+
+function GetStreetViewInfo(){
+  var pos = posElement.innerText;
+  var heading = headingElement.innerText;
+  var pitch = pitchElement.innerText;
+  return ({"pos":pos, "heading":heading, "pitch":pitch, "inMapView":inMapView});
+}
   
