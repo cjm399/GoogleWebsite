@@ -9,6 +9,7 @@ var pitch = 0.0;
 
 var markers = [];
 var map;
+var panorama;
 
 function initPano() {
     map = new google.maps.Map(document.getElementById("map"), {
@@ -19,7 +20,7 @@ function initPano() {
   
     AddMarker(pos.lat, pos.lng, "Fenway");
   
-    const panorama = new google.maps.StreetViewPanorama(
+    panorama = new google.maps.StreetViewPanorama(
       document.getElementById("pano"), {
         position: pos,
         pov: {
