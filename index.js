@@ -101,7 +101,7 @@ function AddMarker(_lat, _lng, _title)
       panorama.setVisible(false);
       panorama.setVisible(true);
       inMapView = false;
-      pos = marker.position;
+      pos = currMarker.position;
       panorama.setPosition(marker.position);
     });
     markers.push(currMarker);
