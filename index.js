@@ -4,8 +4,8 @@ const fenway = {
 };
 var inMapView = true;
 var pos = fenway;
-var heading = 270;
-var pitch = 0;
+var heading = 270.0;
+var pitch = 0.0;
 
 function initPano() {
     const map = new google.maps.Map(document.getElementById("map"), {
