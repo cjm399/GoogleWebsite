@@ -8,9 +8,10 @@ var heading = 270.0;
 var pitch = 0.0;
 
 var markers = [];
+var map;
 
 function initPano() {
-    const map = new google.maps.Map(document.getElementById("map"), {
+    map = new google.maps.Map(document.getElementById("map"), {
       center: pos,
       zoom: 14,
       disableDefaultUI: true,
