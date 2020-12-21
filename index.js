@@ -18,8 +18,6 @@ function initPano() {
       disableDefaultUI: true,
     });
   
-    AddMarker(pos.lat, pos.lng, "Fenway");
-  
     panorama = new google.maps.StreetViewPanorama(
       document.getElementById("pano"), {
         position: pos,
