@@ -60,17 +60,7 @@ function initPano() {
       pitch = panorama.getPov().pitch;
     });
 
-    document.getElementById("returnToMap").addEventListener("click", () =>{
-      const panoE = document.getElementById("pano");
-      panoE.setAttribute("style","display:none");
-      const overlayE = document.getElementById("overlay");
-      overlayE.setAttribute("style","display:none");
-      const mapE = document.getElementById("map");
-      mapE.setAttribute("style","display:block");
-      panorama.setVisible(false);
-      panorama.setVisible(true);
-      inMapView = true;
-    });
+    document.getElementById("returnToMap").addEventListener("click", ExitStreetView);
   }
 
 function GetStreetViewInfo(){
@@ -104,4 +94,17 @@ function AddMarker(_lat, _lng, _title)
       panorama.setZoom(0);
     });
     markers.push(currMarker);
+}
+
+function ExitStreetView()
+{
+  const panoE = document.getElementById('pano');
+  panoE.setAttribute('style','display:none');
+  const overlayE= document.getElementById('overlay');
+  overlay.setAttribute('style','display:none');
+  const mapE = document.getElementById('map');
+  mapE.setAttribute('style','display:block');
+  panorama.setVisible(false);
+  panorama.setVisible(true);
+  inMapView = true;
 }
