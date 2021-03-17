@@ -30,7 +30,6 @@ function initPano() {
         disableDefaultUI: true,
       }
     );
-    AddMarker(39.9552175,-75.1629796, "TEST");
     panorama.addListener("pano_changed", () => {
       const panoCell = document.getElementById("pano-cell");
       panoCell.innerHTML = panorama.getPano();
@@ -63,6 +62,7 @@ function initPano() {
     });
 
     document.getElementById("returnToMap").addEventListener("click", ExitStreetView);
+    AddMarker(39.9552175,-75.1629796, "TEST");
   }
 
 function GetStreetViewInfo(){
