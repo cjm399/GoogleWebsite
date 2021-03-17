@@ -62,7 +62,7 @@ function initPano() {
     });
 
     document.getElementById("returnToMap").addEventListener("click", ExitStreetView);
-    AddMarker(39.9552175,-75.1629796, "TEST");
+    AddDebugMarker(fenway.lat, fenway.lng, "TEST");
   }
 
 function GetStreetViewInfo(){
@@ -83,8 +83,24 @@ function AddMarker(_lat, _lng, _title)
 
     currMarker.addListener("click", () => {
       selectedStory = currMarker.title;
+    });
+    markers.push(currMarker);
+}
+
+function AddDebugMarker(_lat, _lng, _title)
+{
+    var currMarker = new google.maps.Marker({
+      position: {
+        lat: _lat,
+        lng: _lng
+      },
+      map,
+      title: _title,
+    });
+
+    currMarker.addListener("click", () => {
+      selectedStory = currMarker.title;
       EnterStreetView(_lat, _lng);
-      console.log("WAT");
     });
     markers.push(currMarker);
 }
@@ -95,7 +111,6 @@ function EnterStreetView(_lat, _lng)
     lat: _lat,
     lng : _lng
   };
-  console.log("Enter");
   const panoE = document.getElementById("pano");
   panoE.setAttribute("style","display:block");
   const overlayE= document.getElementById("overlay");
