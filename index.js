@@ -30,7 +30,7 @@ function initPano() {
         disableDefaultUI: true,
       }
     );
-    AddMarker(pos.lat, pos.lng, "TEST");
+    AddMarker(39.9552175,-75.1629796, "TEST");
     panorama.addListener("pano_changed", () => {
       const panoCell = document.getElementById("pano-cell");
       panoCell.innerHTML = panorama.getPano();
