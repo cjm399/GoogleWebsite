@@ -84,6 +84,7 @@ function AddMarker(_lat, _lng, _title)
     currMarker.addListener("click", () => {
       selectedStory = currMarker.title;
       EnterStreetView(position.lat, position.lng);
+      console.log("WAT");
     });
     markers.push(currMarker);
 }
@@ -94,6 +95,7 @@ function EnterStreetView(_lat, _lng)
     lat: _lat,
     lng : _lng
   };
+  console.log("Enter");
   const panoE = document.getElementById("pano");
   panoE.setAttribute("style","display:block");
   const overlayE= document.getElementById("overlay");
