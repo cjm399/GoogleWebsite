@@ -83,7 +83,7 @@ function AddMarker(_lat, _lng, _title)
 
     currMarker.addListener("click", () => {
       selectedStory = currMarker.title;
-      EnterStreetView(position.lat, position.lng);
+      EnterStreetView(_lat, _lng);
       console.log("WAT");
     });
     markers.push(currMarker);
