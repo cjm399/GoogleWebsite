@@ -4,7 +4,6 @@ const fenway = {
 };
 var inMapView = true;
 var pos = fenway;
-var selectedStory = "";
 var heading = 270.0;
 var pitch = 0.0;
 
@@ -62,11 +61,10 @@ function initPano() {
     });
 
     document.getElementById("returnToMap").addEventListener("click", ExitStreetView);
-    AddDebugMarker(fenway.lat, fenway.lng, "TEST");
   }
 
 function GetStreetViewInfo(){
-  var obj = {"pos":pos, "heading":heading, "pitch":pitch, "inMapView":inMapView, "selectedStory":selectedStory};
+  var obj = {"pos":pos, "heading":heading, "pitch":pitch, "inMapView":inMapView};
   return JSON.stringify(obj);
 }
 
@@ -82,47 +80,20 @@ function AddMarker(_lat, _lng, _title)
     });
 
     currMarker.addListener("click", () => {
-      selectedStory = currMarker.title;
+      const panoE = document.getElementById("pano");
+      panoE.setAttribute("style","display:block");
+      const overlayE= document.getElementById("overlay");
+      overlay.setAttribute("style","display:block");
+      const mapE = document.getElementById("map");
+      mapE.setAttribute("style","display:none");
+      panorama.setVisible(false);
+      panorama.setVisible(true);
+      inMapView = false;
+      pos = currMarker.position;
+      panorama.setPosition(currMarker.position);
+      panorama.setZoom(0);
     });
     markers.push(currMarker);
-}
-
-function AddDebugMarker(_lat, _lng, _title)
-{
-    var currMarker = new google.maps.Marker({
-      position: {
-        lat: _lat,
-        lng: _lng
-      },
-      map,
-      title: _title,
-    });
-
-    currMarker.addListener("click", () => {
-      selectedStory = currMarker.title;
-      EnterStreetView(_lat, _lng);
-    });
-    markers.push(currMarker);
-}
-
-function EnterStreetView(_lat, _lng)
-{
-  var position = {
-    lat: _lat,
-    lng : _lng
-  };
-  const panoE = document.getElementById("pano");
-  panoE.setAttribute("style","display:block");
-  const overlayE= document.getElementById("overlay");
-  overlay.setAttribute("style","display:block");
-  const mapE = document.getElementById("map");
-  mapE.setAttribute("style","display:none");
-  panorama.setVisible(false);
-  panorama.setVisible(true);
-  inMapView = false;
-  pos = position;
-  panorama.setPosition(position);
-  panorama.setZoom(0);
 }
 
 function ExitStreetView()
