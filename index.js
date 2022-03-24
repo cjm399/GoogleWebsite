@@ -62,7 +62,7 @@ function initPano() {
     });
 
     document.getElementById("returnToMap").addEventListener("click", ExitStreetView);
-    AddDebugMarker(fenway.lat, fenway.lng, "TEST");
+    //AddDebugMarker(fenway.lat, fenway.lng, "TEST");
   }
 
 function GetStreetViewInfo(){
